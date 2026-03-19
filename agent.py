@@ -20,7 +20,7 @@ tools = [
                 },
                 "document_type": {
                     "type": "string",
-                    "description": "The type of document, either 'medical_record' or 'case_file'"
+                    "description": "The type of document: 'medical_record', 'billing_record', or 'case_file'"
                 }
             },
             "required": ["document_text", "document_type"]
@@ -36,8 +36,19 @@ def summarize_document(document_text, document_type):
         - Diagnosis
         - Recommended treatment
         - Any important notes
-        
+
         Medical Record:
+        {document_text}"""
+    elif document_type == "billing_record":
+        prompt = f"""Extract all billing line items from this billing record. For each line item, extract the following fields if present:
+        - Date of service
+        - CPT code
+        - CPT description
+        - Plaintiff charge
+
+        Return the results as a list of line items. If a field is not present for a given line item, omit it.
+
+        Billing Record:
         {document_text}"""
     else:
         prompt = f"""Extract the following from this case file:
@@ -45,7 +56,7 @@ def summarize_document(document_text, document_type):
         - Parties involved
         - Key dates
         - Summary of facts
-        
+
         Case File:
         {document_text}"""
     

@@ -7,6 +7,7 @@ An AI-powered agent that summarizes medical records and case files using the Ant
 The agent accepts a document and its type, then uses Claude to call a `summarize_document` tool that extracts relevant fields:
 
 - **Medical records** — patient name, date of visit, diagnosis, recommended treatment, and important notes
+- **Billing records** — all line items with date of service, CPT code, CPT description, and plaintiff charge
 - **Case files** — case number, parties involved, key dates, and a summary of facts
 
 The flow is:
@@ -84,6 +85,8 @@ To process your own documents, call `run_agent()` directly:
 
 ```python
 run_agent(document_text="...", document_type="medical_record")
+# or
+run_agent(document_text="...", document_type="billing_record")
 # or
 run_agent(document_text="...", document_type="case_file")
 ```
