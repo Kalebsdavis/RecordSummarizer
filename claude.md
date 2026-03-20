@@ -1,0 +1,1 @@
+when creating new endpoints or functions inlcude a one sentence summary of what it does

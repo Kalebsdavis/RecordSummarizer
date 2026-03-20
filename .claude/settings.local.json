@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v \"^/c/RecordSummarizer/.venv/Lib/site-packages$\")",
+      "Bash(xargs -I {} basename {})"
+    ]
+  }
+}
